@@ -1,7 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include <sys/times.h>
 #include <time.h>
+
+#ifdef DYNAMIC_TEST
+
+#include <dlfcn.h>
+
+#endif
 
 #include "../zad1/addrbook.h"
 #include "data.h"
@@ -133,7 +140,9 @@ void create_bst() {
 void fill_ll(AvgTiming *t) {
     for (int i = 0; i < 1000; i++) {
         Timing tt = timing_start();
+#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
         int id = (int) data[i][0];
+#pragma GCC diagnostic pop
         const char *name = data[i][1];
         const char *phone = data[i][2];
         addr_book_add(llbook, addr_new(id, name, phone));
@@ -144,7 +153,9 @@ void fill_ll(AvgTiming *t) {
 void fill_bst(AvgTiming *t) {
     for (int i = 0; i < 1000; i++) {
         Timing tt = timing_start();
+#pragma GCC diagnostic ignored "-Wpointer-to-int-cast"
         int id = (int) data[i][0];
+#pragma GCC diagnostic pop
         const char *name = data[i][1];
         const char *phone = data[i][2];
         addr_book_add(bstbook, addr_new(id, name, phone));
@@ -204,6 +215,26 @@ void bstname2llphone(void) {
     addr_book_rebuild(bstbook, ABB_LinkedList, ABS_ByPhone);
 };
 
+void dynamic_test(void) {
+#ifdef DYNAMIC_TEST
+    void *dlhandle = dlopen("/lib64/libm.so.6", RTLD_LAZY);
+    if (!dlhandle) {
+        fprintf(stderr, "%s\n", dlerror());
+    }
+
+    double (*dynamic_cos)(double) = (double (*)(double)) dlsym(dlhandle, "cos");
+
+    char *error = dlerror();
+    if (error != NULL) {
+        fprintf(stderr, "%s\n", error);
+    }
+
+    printf("\nFunny cosine: %f\n", (*dynamic_cos)(2.0));
+
+    dlclose(dlhandle);
+#endif
+}
+
 int main(int argc, char *argv[]) {
     bench("Creating new ll-ab", create_ll);
     bench("Creating new bst-ab (sorted by name)", create_bst);
@@ -222,6 +253,8 @@ int main(int argc, char *argv[]) {
     bench("Rebuilding bst-ab id -> bst-ab phone", bstid2bstphone);
     bench("Rebuilding bst-ab phone -> ll-ab phone", bstphone2llphone);
     bench("Rebuilding bst-ab name -> ll-ab phone", bstname2llphone);
+
+    dynamic_test();
 
     addr_book_free(bstbook);
     addr_book_free(llbook);
