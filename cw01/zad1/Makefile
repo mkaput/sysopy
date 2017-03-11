@@ -3,7 +3,7 @@ SNAME   := lib$(NAME).a
 DNAME   := lib$(NAME).so
 SRC     :=  $(wildcard *.c)
 OBJ     :=  $(SRC:.c=.o)
-CFLAGS	:= -Wall -std=c99 -fPIC
+CFLAGS	:= -Wall -std=c99 -fPIC -g
 
 .PHONY: all clean re
 

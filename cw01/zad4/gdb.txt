@@ -1,0 +1,62 @@
+W celu zepsucia programu zmieniłem w jednym z wywołań addr_book_rebuild argument backend z oczekiwanej wartości enuma na losową liczbę. Funkcja ta wykrywa takie przypadki i wywołuje funkcję abort():
+
+    *** zad2/main.c
+    --- zad4/main.c
+    *************** void remove_bst_pes(void) {
+    *** 196,202 ****
+    }
+
+    void llid2llname(void) {
+    !     addr_book_rebuild(llbook, ABB_LinkedList, ABS_ByName);
+    };
+
+    void llname2bstid(void) {
+    --- 196,202 ----
+    }
+
+    void llid2llname(void) {
+    !     addr_book_rebuild(llbook, 100, ABS_ByName);
+    };
+
+    void llname2bstid(void) {
+
+Skompilowałem program...
+
+    > make
+
+...oraz uruchomiłem w GDB...
+
+    > gdb zad4
+
+...i rozkazałem wykonać program.
+
+    (gdb) run
+    Starting program:
+    {...}
+    Removing from bst-ab (pesimistic) - real: 0.001ms, user: 0.000ms, sys: 0.
+    000ms
+    unknown backend: Success
+
+    Program received signal SIGABRT, Aborted.
+    0x0000000000407a47 in raise (sig=sig@entry=6)
+        at ../sysdeps/unix/sysv/linux/raise.c:55
+    55      ../sysdeps/unix/sysv/linux/raise.c: No such file or directory.
+
+Otrzymany komunikat niewiele mówi nam o położeniu błędu. Spróbujmy zobaczyć co mamy w backtrace:
+
+    (gdb) bt
+    #0  0x0000000000407a47 in raise (sig=sig@entry=6)
+        at ../sysdeps/unix/sysv/linux/raise.c:55
+    #1  0x0000000000407bba in abort () at abort.c:78
+    #2  0x00000000004019e2 in addr_book_rebuild (book=0x6c8d70,
+        backend=(unknown: 100), sorting=ABS_ByName) at addrbook.c:158
+    #3  0x000000000040125e in llid2llname () at main.c:199
+    #4  0x0000000000400eb5 in bench (
+        name=0x492970 "Rebuilding ll-ab id -> ll-ab name",
+        action=0x401241 <llid2llname>) at main.c:114
+    #5  0x00000000004013b4 in main (argc=1, argv=0x7fffffffdc28)
+        at main.c:251
+
+Już otrzymana wartość pola backend mówi nam że coś jest nie tak.
+
+Niestety, używana dysktrybucja Linuxa (openSUSE) nie chciała ze mną współpracować jeżeli chodzi o generowanie plików core dump. Stąd nie miałem możliwości zaprezentowania tej metody.
