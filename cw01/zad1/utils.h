@@ -13,6 +13,6 @@
  *  <li>a = b => 0</li>
  *  </ul>
  */
-typedef int (*ValueComparator)(void *a, void *b);
+typedef int (*ValueComparator)(const void *a, const void *b);
 
 #endif //ADDRBOOK_UTILS_H

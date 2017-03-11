@@ -2,7 +2,7 @@
 
 #include <string.h>
 
-Addr *addr_new(int id, char name[], char phone[]) {
+Addr *addr_new(int id, const char *name, const char *phone) {
     Addr *addr = malloc(sizeof(Addr));
     addr->id = id;
     addr->name = calloc(strlen(name) + 1, sizeof(char));
@@ -12,7 +12,7 @@ Addr *addr_new(int id, char name[], char phone[]) {
     return addr;
 }
 
-Addr *addr_copy(Addr *source) {
+Addr *addr_copy(const Addr *source) {
     Addr *addr = malloc(sizeof(Addr));
     addr->id = source->id;
     addr->name = calloc(strlen(source->name) + 1, sizeof(char));
@@ -28,19 +28,19 @@ void addr_free(Addr *addr) {
     free(addr);
 }
 
-int addr_compare_by_id(void *a, void *b) {
+int addr_compare_by_id(const void *a, const void *b) {
     Addr *addr_a = (Addr *) a;
     Addr *addr_b = (Addr *) b;
     return addr_a->id - addr_b->id;
 }
 
-int addr_compare_by_name(void *a, void *b) {
+int addr_compare_by_name(const void *a, const void *b) {
     Addr *addr_a = (Addr *) a;
     Addr *addr_b = (Addr *) b;
     return strcmp(addr_a->name, addr_b->name);
 }
 
-int addr_compare_by_phone(void *a, void *b) {
+int addr_compare_by_phone(const void *a, const void *b) {
     Addr *addr_a = (Addr *) a;
     Addr *addr_b = (Addr *) b;
     return strcmp(addr_a->phone, addr_b->phone);

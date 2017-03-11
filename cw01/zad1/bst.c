@@ -18,47 +18,45 @@ void bst_free(Bst *bst) {
     free(bst);
 }
 
-int bst_compare(Bst *bst, void *a, void *b) {
+int bst_compare(const Bst *bst, const void *a, const void *b) {
     return bst->_comparator(a, b);
 }
 
-size_t bst_size(Bst *bst) {
+size_t bst_size(const Bst *bst) {
     return bst->_size;
 }
 
-bool bst_contains(Bst *bst, void *value) {
+bool bst_contains(const Bst *bst, const void *value) {
     return bst_get_node(bst, value) != NULL;
 }
 
-BstNode *bst_root_node(Bst *bst) {
+BstNode *bst_root_node(const Bst *bst) {
     return bst != NULL ? bst->_root : NULL;
 }
 
-BstNode *bst_minimum(Bst *bst) {
+BstNode *bst_minimum(const Bst *bst) {
     return bst_sub_minimum(bst_root_node(bst));
 }
 
-BstNode *bst_maximum(Bst *bst) {
+BstNode *bst_maximum(const Bst *bst) {
     return bst_sub_maximum(bst_root_node(bst));
 }
 
 BstNode *bst_sub_minimum(BstNode *node) {
-    if (node == NULL) return NULL;
-    while (node->_left != NULL) {
+    while (node != NULL && node->_left != NULL) {
         node = node->_left;
     }
     return node;
 }
 
 BstNode *bst_sub_maximum(BstNode *node) {
-    if (node == NULL) return NULL;
-    while (node->_right != NULL) {
+    while (node != NULL && node->_right != NULL) {
         node = node->_right;
     }
     return node;
 }
 
-BstNode *bst_get_node(Bst *bst, void *value) {
+BstNode *bst_get_node(const Bst *bst, const void *value) {
     BstNode *node = bst_root_node(bst);
     while (node != NULL) {
         int cmp = bst_compare(bst, value, node->value);
@@ -81,23 +79,28 @@ BstNode *bst_add(Bst *bst, void *value) {
     new_node->_left = NULL;
     new_node->_right = NULL;
 
-    BstNode *node = bst_root_node(bst);
-    while (node != NULL) {
-        new_node->_parent = node;
-        if (bst_compare(bst, value, node->value) < 0) {
-            node = node->_left;
+    BstNode *parent = NULL;
+    BstNode *x = bst_root_node(bst);
+    while (x != NULL) {
+        parent = x;
+        if (bst_compare(bst, value, x->value) < 0) {
+            x = x->_left;
         } else {
-            node = node->_right;
+            x = x->_right;
         }
     }
 
-    if (new_node->_parent == NULL) {
+    new_node->_parent = parent;
+
+    if (parent == NULL) {
         bst->_root = new_node;
-    } else if (bst_compare(bst, value, new_node->_parent->value) < 0) {
-        new_node->_parent->_left = new_node;
+    } else if (bst_compare(bst, value, parent->value) < 0) {
+        parent->_left = new_node;
     } else {
-        new_node->_parent->_right = new_node;
+        parent->_right = new_node;
     }
+
+    bst->_size++;
 
     return new_node;
 }
@@ -137,9 +140,11 @@ void bst_remove_node(Bst *bst, BstNode *node) {
         x->_left = node->_left;
         x->_left->_parent = x;
     }
+
+    bst->_size--;
 }
 
-BstNode *bst_next(BstNode *node) {
+BstNode *bst_next(const BstNode *node) {
     if (node == NULL) return NULL;
 
     if (node->_right != NULL) {
@@ -154,7 +159,7 @@ BstNode *bst_next(BstNode *node) {
     }
 }
 
-BstNode *bst_prev(BstNode *node) {
+BstNode *bst_prev(const BstNode *node) {
     if (node == NULL) return NULL;
 
     if (node->_left != NULL) {

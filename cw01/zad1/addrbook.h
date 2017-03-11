@@ -26,7 +26,7 @@ typedef struct AddrBook {
     };
 } AddrBook;
 
-typedef struct AddrBookInterator {
+typedef struct AddrBookIterator {
     AddrBook *_book;
     union {
         struct {
@@ -36,7 +36,7 @@ typedef struct AddrBookInterator {
             BstNode *_cur_bst;
         };
     };
-} AddrBookInterator;
+} AddrBookIterator;
 
 AddrBook *addr_book_new(AddrBookBackend backend);
 
@@ -54,12 +54,12 @@ Addr *addr_book_search_by_phone(AddrBook *book, char phone[]);
 
 void addr_book_rebuild(AddrBook *book, AddrBookBackend backend, AddrBookSorting sorting);
 
-AddrBookInterator addr_book_iter(AddrBook *book);
+AddrBookIterator addr_book_iter(AddrBook *book);
 
-bool addr_book_has_next(AddrBookInterator *iter);
+bool addr_book_has_next(AddrBookIterator *iter);
 
-AddrBookInterator addr_book_next(AddrBookInterator iter);
+AddrBookIterator addr_book_next(AddrBookIterator iter);
 
-Addr *addr_book_iter_get(AddrBookInterator *iter);
+Addr *addr_book_iter_get(AddrBookIterator *iter);
 
 #endif //ADDRBOOK_ADDRBOOK_H
