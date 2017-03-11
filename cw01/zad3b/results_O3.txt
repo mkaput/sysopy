@@ -1,0 +1,19 @@
+Creating new ll-ab - real: 0.040ms, user: 0.000ms, sys: 0.000ms
+Creating new bst-ab (sorted by name) - real: 0.003ms, user: 0.000ms, sys: 0.000ms
+Filling ll-ab - measurements: 1000, averages [real: 0.000ms, user: 0.000ms, sys: 0.000ms]
+Filling bst-ab (sorted by name) - measurements: 1000, averages [real: 0.001ms, user: 0.000ms, sys: 0.000ms]
+Searching in ll-ab (optimistic) - real: 0.001ms, user: 0.000ms, sys: 0.000ms
+Searching in ll-ab (pesimistic) - real: 0.014ms, user: 0.000ms, sys: 0.000ms
+Searching in bst-ab (optimistic) - real: 0.001ms, user: 0.000ms, sys: 0.000ms
+Searching in bst-ab (pesimistic) - real: 0.001ms, user: 0.000ms, sys: 0.000ms
+Removing from ll-ab (optimistic) - real: 0.001ms, user: 0.000ms, sys: 0.000ms
+Removing from ll-ab (pesimistic) - real: 0.016ms, user: 0.000ms, sys: 0.000ms
+Removing from bst-ab (optimistic) - real: 0.001ms, user: 0.000ms, sys: 0.000ms
+Removing from bst-ab (pesimistic) - real: 0.001ms, user: 0.000ms, sys: 0.000ms
+Rebuilding ll-ab id -> ll-ab name - real: 10.350ms, user: 0.000ms, sys: 0.000ms
+Rebuilding ll-ab name -> bst-ab id - real: 0.220ms, user: 0.000ms, sys: 0.000ms
+Rebuilding bst-ab id -> bst-ab phone - real: 0.356ms, user: 0.000ms, sys: 0.000ms
+Rebuilding bst-ab phone -> ll-ab phone - real: 0.098ms, user: 0.000ms, sys: 0.000ms
+Rebuilding bst-ab name -> ll-ab phone - real: 13.956ms, user: 0.002ms, sys: 0.000ms
+
+Funny cosine: -0.416147

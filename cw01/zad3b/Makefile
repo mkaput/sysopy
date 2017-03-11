@@ -1,9 +1,10 @@
-NAME    := zad3a
-SNAME   := $(NAME)_static
-DNAME   := $(NAME)_so
-LNAME   := $(NAME)_loader
+OPT		?= O2
+NAME    := zad3b
+SNAME   := $(NAME)_$(OPT)_static
+DNAME   := $(NAME)_$(OPT)_so
+LNAME   := $(NAME)_$(OPT)_loader
 SRC     := $(wildcard ../zad2/*.c)
-CFLAGS	:= -Wall -std=gnu99
+CFLAGS	:= -Wall -std=gnu99 -$(OPT)
 LDFLAGS := -L. -L../zad1/
 LDLIBS  := -lzad1
 
@@ -31,9 +32,9 @@ $(LNAME) : $(SRC)
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@/$@
 
 test : $(LNAME)
-	$(LNAME)/$(LNAME) > results.txt
+	$(LNAME)/$(LNAME) > results_$(OPT).txt
 
 clean:
-	$(RM) -rf zad3a_* libzad1.so
+	$(RM) -rf zad3b_* libzad1.so
 
 re: clean all

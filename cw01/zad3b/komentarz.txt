@@ -1,0 +1,1 @@
+Wyniki otrzymane na komputerze testowym różnią się nieznacznie (rzędu 1ms), dodatkowo nie da się zaobserować żadnej zależności. Prawdopodobnie jest to efekt zbyt małego zestawu danych jak na ten rodzaj procesora (Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz)
