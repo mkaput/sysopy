@@ -1,5 +1,5 @@
-#ifndef SYSOPY_KSIAZKA_ADRESOWA_LINKED_LIST_H
-#define SYSOPY_KSIAZKA_ADRESOWA_LINKED_LIST_H
+#ifndef ADDRBOOK_LINKED_LIST_H
+#define ADDRBOOK_LINKED_LIST_H
 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -17,7 +17,7 @@ typedef struct LLLinkedList {
     size_t _size;
 } LLLinkedList;
 
-LLLinkedList *ll_new();
+LLLinkedList *ll_new(void);
 
 void ll_free(LLLinkedList *list);
 
@@ -45,4 +45,4 @@ LLNode *ll_prev(LLNode *node);
 
 void ll_sort(LLLinkedList *list, ValueComparator cmp);
 
-#endif //SYSOPY_KSIAZKA_ADRESOWA_LINKED_LIST_H
+#endif //ADDRBOOK_LINKED_LIST_H

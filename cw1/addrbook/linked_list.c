@@ -1,7 +1,7 @@
 #include "linked_list.h"
 #include "utils.h"
 
-LLLinkedList *ll_new() {
+LLLinkedList *ll_new(void) {
     LLLinkedList *list = malloc(sizeof(LLLinkedList));
     list->_head = NULL;
     list->_last = NULL;
@@ -13,7 +13,7 @@ void ll_free(LLLinkedList *list) {
     LLNode *node = ll_head_node(list);
     while (node != NULL) {
         LLNode *next_node = ll_next(node);
-        free(next_node);
+        free(node);
         node = next_node;
     }
 
@@ -51,6 +51,7 @@ void ll_prepend(LLLinkedList *list, void *value) {
     node->_next = ll_head_node(list);
     node->_prev = NULL;
 
+    list->_head->_prev = node;
     list->_head = node;
     list->_size += 1;
 
@@ -63,6 +64,7 @@ void ll_append(LLLinkedList *list, void *value) {
     node->_next = NULL;
     node->_prev = ll_last_node(list);
 
+    list->_last->_next = node;
     list->_last = node;
     list->_size += 1;
 
