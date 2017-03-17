@@ -1,0 +1,184 @@
+----------------------
+ 500 4
+
+shuffle sys
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+shuffle lib
+real	0m0.002s
+user	0m0.001s
+sys	0m0.001s
+
+sort sys
+real	0m0.254s
+user	0m0.030s
+sys	0m0.224s
+
+sort lib
+real	0m0.204s
+user	0m0.047s
+sys	0m0.157s
+
+----------------------
+ 500 512
+
+shuffle sys
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
+
+shuffle lib
+real	0m0.003s
+user	0m0.001s
+sys	0m0.002s
+
+sort sys
+real	0m0.264s
+user	0m0.020s
+sys	0m0.243s
+
+sort lib
+real	0m0.223s
+user	0m0.041s
+sys	0m0.181s
+
+----------------------
+ 500 4096
+
+shuffle sys
+real	0m0.004s
+user	0m0.000s
+sys	0m0.003s
+
+shuffle lib
+real	0m0.005s
+user	0m0.001s
+sys	0m0.004s
+
+sort sys
+real	0m0.329s
+user	0m0.025s
+sys	0m0.303s
+
+sort lib
+real	0m0.354s
+user	0m0.051s
+sys	0m0.302s
+
+----------------------
+ 500 8192
+
+shuffle sys
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
+
+shuffle lib
+real	0m0.004s
+user	0m0.000s
+sys	0m0.004s
+
+sort sys
+real	0m0.540s
+user	0m0.026s
+sys	0m0.512s
+
+sort lib
+real	0m0.490s
+user	0m0.069s
+sys	0m0.420s
+
+----------------------
+ 5000 4
+
+shuffle sys
+real	0m0.016s
+user	0m0.000s
+sys	0m0.016s
+
+shuffle lib
+real	0m0.021s
+user	0m0.002s
+sys	0m0.019s
+
+sort sys
+real	0m24.677s
+user	0m2.180s
+sys	0m22.459s
+
+sort lib
+real	0m20.449s
+user	0m4.331s
+sys	0m16.087s
+
+----------------------
+ 5000 512
+
+shuffle sys
+real	0m0.026s
+user	0m0.001s
+sys	0m0.025s
+
+shuffle lib
+real	0m0.023s
+user	0m0.001s
+sys	0m0.022s
+
+sort sys
+real	0m25.786s
+user	0m2.268s
+sys	0m23.470s
+
+sort lib
+real	0m23.692s
+user	0m5.112s
+sys	0m18.515s
+
+----------------------
+ 5000 4096
+
+shuffle sys
+real	0m0.043s
+user	0m0.002s
+sys	0m0.040s
+
+shuffle lib
+real	0m0.029s
+user	0m0.004s
+sys	0m0.025s
+
+sort sys
+real	0m44.043s
+user	0m2.501s
+sys	0m41.407s
+
+sort lib
+real	0m43.846s
+user	0m5.919s
+sys	0m37.781s
+
+----------------------
+ 5000 8192
+
+shuffle sys
+real	0m0.062s
+user	0m0.003s
+sys	0m0.059s
+
+shuffle lib
+real	0m0.030s
+user	0m0.005s
+sys	0m0.025s
+
+sort sys
+real	1m11.937s
+user	0m2.622s
+sys	1m9.111s
+
+sort lib
+real	1m4.732s
+user	0m6.449s
+sys	0m58.011s
+

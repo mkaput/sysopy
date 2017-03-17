@@ -1,0 +1,3 @@
+Funkcje biblioteczne ewidentnie sprawują się lepiej od wywołań systemowych - wbrew intuicji wynikającej z warstwy abstrakcji.
+
+Można zauważyć, że implementacje używające funkcji bibliotecznych spędzają więcej czasu w trybie użytkownika, zyskując na dużo niższym czasem systemowym. Można się spodziewać więc, że stosują one pewne optymalizacje, które wynikowo generują przyjaźniejsze dla jądra wywołania systemowe (np. jakieś buforowanie).
