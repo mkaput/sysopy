@@ -40,14 +40,12 @@ void generate(const char *file_name, size_t records, size_t size) {
         abort();
     }
 
-    void *buffer = calloc(records, size);
+    void *buffer = malloc(size);
     MALLOC_CHK(buffer);
 
-    for (int i = 0; i < 16; ++i) {
-        size_t bts = fread(buffer, size, records, rnd);
-        if (bts > 0) {
-            fwrite(buffer, size, bts, file);
-        }
+    for (int i = 0; i < records; ++i) {
+        size_t rr = fread(buffer, size, 1, rnd);
+        fwrite(buffer, size, rr, file);
     }
 
     free(buffer);
@@ -73,14 +71,14 @@ void shuffle_sys(const char *file_name, size_t records, size_t size) {
         size_t j = rand() % records;
 
         SEEK_CHK(lseek(fd, i * size, SEEK_SET));
-        ssize_t bts_a = read(fd, buffer_a, size);
+        ssize_t rra = read(fd, buffer_a, size);
         SEEK_CHK(lseek(fd, j * size, SEEK_SET));
-        ssize_t bts_b = read(fd, buffer_b, size);
+        ssize_t rrb = read(fd, buffer_b, size);
 
         SEEK_CHK(lseek(fd, i * size, SEEK_SET));
-        write(fd, buffer_b, (size_t) bts_b);
+        write(fd, buffer_b, (size_t) rrb);
         SEEK_CHK(lseek(fd, j * size, SEEK_SET));
-        write(fd, buffer_a, (size_t) bts_a);
+        write(fd, buffer_a, (size_t) rra);
     }
 
     free(buffer_b);
@@ -106,14 +104,14 @@ void shuffle_lib(const char *file_name, size_t records, size_t size) {
         size_t j = rand() % records;
 
         SEEK_CHK(fseek(file, i * size, SEEK_SET));
-        size_t bts_a = fread(buffer_a, size, 1, file);
+        size_t rra = fread(buffer_a, size, 1, file);
         SEEK_CHK(fseek(file, j * size, SEEK_SET));
-        size_t bts_b = fread(buffer_b, size, 1, file);
+        size_t rrb = fread(buffer_b, size, 1, file);
 
         SEEK_CHK(fseek(file, i * size, SEEK_SET));
-        fwrite(buffer_b, bts_b, 1, file);
+        fwrite(buffer_b, rrb, 1, file);
         SEEK_CHK(fseek(file, j * size, SEEK_SET));
-        fwrite(buffer_a, bts_a, 1, file);
+        fwrite(buffer_a, rra, 1, file);
     }
 
     free(buffer_b);
@@ -142,18 +140,18 @@ void sort_sys(const char *file_name, size_t records, size_t size) {
             size_t j = i + 1;
 
             SEEK_CHK(lseek(fd, i * size, SEEK_SET));
-            ssize_t bts_a = read(fd, buffer_a, size);
+            ssize_t rra = read(fd, buffer_a, size);
             SEEK_CHK(lseek(fd, j * size, SEEK_SET));
-            ssize_t bts_b = read(fd, buffer_b, size);
+            ssize_t rrb = read(fd, buffer_b, size);
 
             unsigned char key_a = ((unsigned char *) buffer_a)[0];
             unsigned char key_b = ((unsigned char *) buffer_b)[0];
 
             if (key_a > key_b) {
                 SEEK_CHK(lseek(fd, i * size, SEEK_SET));
-                write(fd, buffer_b, (size_t) bts_b);
+                write(fd, buffer_b, (size_t) rrb);
                 SEEK_CHK(lseek(fd, j * size, SEEK_SET));
-                write(fd, buffer_a, (size_t) bts_a);
+                write(fd, buffer_a, (size_t) rra);
 
                 swapped = true;
             }
@@ -186,18 +184,18 @@ void sort_lib(const char *file_name, size_t records, size_t size) {
             size_t j = i + 1;
 
             SEEK_CHK(fseek(file, i * size, SEEK_SET));
-            size_t bts_a = fread(buffer_a, size, 1, file);
+            size_t rra = fread(buffer_a, size, 1, file);
             SEEK_CHK(fseek(file, j * size, SEEK_SET));
-            size_t bts_b = fread(buffer_b, size, 1, file);
+            size_t rrb = fread(buffer_b, size, 1, file);
 
             unsigned char key_a = ((unsigned char *) buffer_a)[0];
             unsigned char key_b = ((unsigned char *) buffer_b)[0];
 
             if (key_a > key_b) {
                 SEEK_CHK(fseek(file, i * size, SEEK_SET));
-                fwrite(buffer_b, bts_b, 1, file);
+                fwrite(buffer_b, rrb, 1, file);
                 SEEK_CHK(fseek(file, j * size, SEEK_SET));
-                fwrite(buffer_a, bts_a, 1, file);
+                fwrite(buffer_a, rra, 1, file);
 
                 swapped = true;
             }

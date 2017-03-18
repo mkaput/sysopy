@@ -12,14 +12,14 @@ user	0m0.001s
 sys	0m0.001s
 
 sort sys
-real	0m0.254s
-user	0m0.030s
-sys	0m0.224s
+real	0m0.210s
+user	0m0.014s
+sys	0m0.196s
 
 sort lib
-real	0m0.204s
-user	0m0.047s
-sys	0m0.157s
+real	0m0.164s
+user	0m0.041s
+sys	0m0.123s
 
 ----------------------
  500 512
@@ -30,155 +30,155 @@ user	0m0.000s
 sys	0m0.002s
 
 shuffle lib
-real	0m0.003s
-user	0m0.001s
+real	0m0.002s
+user	0m0.000s
 sys	0m0.002s
 
 sort sys
-real	0m0.264s
-user	0m0.020s
-sys	0m0.243s
+real	0m0.214s
+user	0m0.026s
+sys	0m0.188s
 
 sort lib
-real	0m0.223s
-user	0m0.041s
-sys	0m0.181s
+real	0m0.193s
+user	0m0.052s
+sys	0m0.139s
 
 ----------------------
  500 4096
 
 shuffle sys
-real	0m0.004s
+real	0m0.002s
 user	0m0.000s
-sys	0m0.003s
+sys	0m0.002s
 
 shuffle lib
-real	0m0.005s
-user	0m0.001s
-sys	0m0.004s
+real	0m0.002s
+user	0m0.000s
+sys	0m0.002s
 
 sort sys
-real	0m0.329s
-user	0m0.025s
-sys	0m0.303s
+real	0m0.259s
+user	0m0.020s
+sys	0m0.238s
 
 sort lib
-real	0m0.354s
-user	0m0.051s
-sys	0m0.302s
+real	0m0.279s
+user	0m0.042s
+sys	0m0.237s
 
 ----------------------
  500 8192
 
 shuffle sys
-real	0m0.004s
+real	0m0.003s
 user	0m0.000s
-sys	0m0.004s
+sys	0m0.003s
 
 shuffle lib
-real	0m0.004s
+real	0m0.003s
 user	0m0.000s
-sys	0m0.004s
+sys	0m0.003s
 
 sort sys
-real	0m0.540s
-user	0m0.026s
-sys	0m0.512s
+real	0m0.415s
+user	0m0.023s
+sys	0m0.391s
 
 sort lib
-real	0m0.490s
-user	0m0.069s
-sys	0m0.420s
+real	0m0.367s
+user	0m0.049s
+sys	0m0.317s
 
 ----------------------
  5000 4
 
 shuffle sys
-real	0m0.016s
-user	0m0.000s
-sys	0m0.016s
+real	0m0.010s
+user	0m0.002s
+sys	0m0.008s
 
 shuffle lib
-real	0m0.021s
+real	0m0.015s
 user	0m0.002s
-sys	0m0.019s
+sys	0m0.013s
 
 sort sys
-real	0m24.677s
-user	0m2.180s
-sys	0m22.459s
+real	0m21.236s
+user	0m2.061s
+sys	0m19.154s
 
 sort lib
-real	0m20.449s
-user	0m4.331s
-sys	0m16.087s
+real	0m17.710s
+user	0m4.115s
+sys	0m13.573s
 
 ----------------------
  5000 512
 
 shuffle sys
-real	0m0.026s
+real	0m0.012s
 user	0m0.001s
-sys	0m0.025s
+sys	0m0.011s
 
 shuffle lib
-real	0m0.023s
-user	0m0.001s
-sys	0m0.022s
+real	0m0.019s
+user	0m0.002s
+sys	0m0.017s
 
 sort sys
-real	0m25.786s
-user	0m2.268s
-sys	0m23.470s
+real	0m22.676s
+user	0m2.081s
+sys	0m20.550s
 
 sort lib
-real	0m23.692s
-user	0m5.112s
-sys	0m18.515s
+real	0m19.792s
+user	0m4.745s
+sys	0m15.017s
 
 ----------------------
  5000 4096
 
 shuffle sys
-real	0m0.043s
-user	0m0.002s
-sys	0m0.040s
+real	0m0.018s
+user	0m0.003s
+sys	0m0.015s
 
 shuffle lib
-real	0m0.029s
-user	0m0.004s
-sys	0m0.025s
+real	0m0.020s
+user	0m0.003s
+sys	0m0.016s
 
 sort sys
-real	0m44.043s
-user	0m2.501s
-sys	0m41.407s
+real	0m35.854s
+user	0m2.234s
+sys	0m33.549s
 
 sort lib
-real	0m43.846s
-user	0m5.919s
-sys	0m37.781s
+real	0m40.736s
+user	0m6.402s
+sys	0m34.227s
 
 ----------------------
  5000 8192
 
 shuffle sys
-real	0m0.062s
-user	0m0.003s
-sys	0m0.059s
+real	0m0.036s
+user	0m0.002s
+sys	0m0.033s
 
 shuffle lib
-real	0m0.030s
-user	0m0.005s
-sys	0m0.025s
+real	0m0.027s
+user	0m0.001s
+sys	0m0.026s
 
 sort sys
-real	1m11.937s
-user	0m2.622s
-sys	1m9.111s
+real	1m6.051s
+user	0m2.845s
+sys	1m3.053s
 
 sort lib
-real	1m4.732s
-user	0m6.449s
-sys	0m58.011s
+real	1m1.652s
+user	0m6.706s
+sys	0m54.743s
 
