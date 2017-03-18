@@ -1,4 +1,4 @@
-NAME	:= zad2
+NAME	:= zad3
 SRC		:= $(wildcard *.c)
 OBJ		:= $(SRC:.c=.o)
 CFLAGS	:= -Wall -std=c99 -g

@@ -1,0 +1,5 @@
+Podczas testów można zauważyć, że:
+ - rygle nie mają żadnego wpływu na operacje wczytywania/zapisywania
+   (ponieważ są tylko zalecane i nie mają żadnych konsekwencji z punktu widzenia OS)
+ - rygle są automatycznie zamykanie wraz z zamknięciem deskryptora pliku
+ - w obrębie tego samego programu można założyć rygiel na rygiel (więc ls nie wyświetla rygli założonych przez samego siebie)

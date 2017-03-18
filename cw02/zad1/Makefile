@@ -158,6 +158,6 @@ bench: $(NAME)
 	echo "" >> wyniki.txt
 
 clean:
-	$(RM) -rf *.o *.a *.so $(NAME)
+	$(RM) -rf *.o *.a *.so $(NAME) test_*.bin
 
 re: clean all
