@@ -1,0 +1,9 @@
+./zad1_dump FOO
+#FOO BAR
+./zad1_dump    FOO
+#   FOO
+
+     ./zad1_dump FOO
+ls -al
+pwd
+./zad2_badboy
