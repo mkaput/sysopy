@@ -1,8 +1,11 @@
+#define _DEFAULT_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 #include <wait.h>
+#include <sys/types.h>
 
 static void eval_line(char *line) {
 #define MAX_PROGS 64
