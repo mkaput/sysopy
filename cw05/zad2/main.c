@@ -135,6 +135,7 @@ int slave_main(int argc, char *argv[]) {
         double im = (double) rand() * 2.0 / (double) RAND_MAX - 1.0;
         double complex c = CMPLX(re, im);
         fprintf(pipe_file, "%lf %lf %d\n", re, im, iters(c, k));
+        fflush(pipe_file);
     }
 
     fclose(pipe_file);
