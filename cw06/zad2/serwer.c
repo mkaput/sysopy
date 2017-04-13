@@ -78,7 +78,7 @@ int main() {
         }
 
         if (IFVALIDTYPE(msg.mtype)) {
-            msghandlers[msg.mtype](&msg);
+            msghandlers[(size_t) msg.mtype](&msg);
             if (msg.mtype >= 0) {
                 const char *qname;
                 if (msg.mcid >= 0 && msg.mcid < MAX_CLIENTS) {

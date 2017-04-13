@@ -1,6 +1,8 @@
 #ifndef CW06_ZAD1_COMMON_H
 #define CW06_ZAD1_COMMON_H
 
+#define _DEFAULT_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>

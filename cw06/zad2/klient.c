@@ -1,4 +1,3 @@
-#include <sys/msg.h>
 #include "common.h"
 
 static int cid = -1;
