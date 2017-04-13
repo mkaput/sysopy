@@ -1,0 +1,4 @@
+#ifndef CW06_ZAD2_COMMON_H
+#define CW06_ZAD2_COMMON_H
+
+#endif //CW06_ZAD2_COMMON_H

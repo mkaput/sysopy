@@ -3,8 +3,8 @@ project(cw06)
 
 set(CMAKE_C_STANDARD 99)
 
-set(SOURCE_FILES zad1/main.c)
-add_executable(zad1 ${SOURCE_FILES})
+add_executable(zad1_serwer zad1/serwer.c)
+add_executable(zad1_klient zad1/klient.c)
 
-set(SOURCE_FILES2 zad1/main.c)
-add_executable(zad2 ${SOURCE_FILES2})
+add_executable(zad2_serwer zad2/serwer.c)
+add_executable(zad2_klient zad2/klient.c)
