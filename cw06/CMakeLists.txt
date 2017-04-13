@@ -8,3 +8,5 @@ add_executable(zad1_klient zad1/klient.c)
 
 add_executable(zad2_serwer zad2/serwer.c)
 add_executable(zad2_klient zad2/klient.c)
+target_link_libraries(zad2_serwer rt)
+target_link_libraries(zad2_klient rt)

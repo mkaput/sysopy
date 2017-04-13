@@ -56,7 +56,7 @@ int main() {
                    "\techo <text>\n"
                    "\tupper <text>\n"
                    "\ttime\n"
-                   "\tclose\n"
+                   "\texit\n"
                    "\t:q - exit client\n");
 
     size_t buffer_size = 16;
