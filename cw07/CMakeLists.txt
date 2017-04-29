@@ -9,4 +9,4 @@ target_link_libraries(zad1 rt)
 
 set(SOURCE_FILES_ZAD2 zad2/main.c)
 add_executable(zad2 ${SOURCE_FILES_ZAD2})
-target_link_libraries(zad1 rt pthread)
+target_link_libraries(zad2 rt pthread)
