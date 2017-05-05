@@ -32,13 +32,13 @@ double now() {
  * Kolejka
  */
 
-#define QUEUE_SIZE 5
+static unsigned short QUEUE_SIZE;
 
 typedef struct {
     size_t head;
     size_t tail;
     size_t size;
-    int data[QUEUE_SIZE];
+    int data[1];
 } queue_t;
 
 
@@ -326,19 +326,24 @@ void pigeon_atexit() {
     }
 }
 
+void pigeon_sigint(int signum) {
+    pigeon_atexit();
+}
+
 int main(int argc, char *argv[]) {
     atexit(pigeon_atexit);
+    signal(SIGINT, pigeon_sigint);
 
     clock_gettime(CLOCK_MONOTONIC, &starttsp);
 
-    if (argc != 3) {
-        printf("usage: zad1 K S\n");
-        printf("queue size is fixed to: %d\n", QUEUE_SIZE);
+    if (argc != 4) {
+        printf("usage: zad1 K S N\n");
         return 0;
     }
 
     K = (size_t) atoi(argv[1]);
     S = (size_t) atoi(argv[2]);
+    QUEUE_SIZE = (unsigned short) atoi(argv[3]);
 
     KEY = ftok(argv[0], getpid());
     if (KEY == -1) {
