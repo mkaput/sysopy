@@ -210,7 +210,7 @@ int kid_wait_for_enqueuing() {
         return -1;
     }
 
-    printf("[%.4lf] %d: ale fajny ptaszek\n", now(), getpid());
+    printf("[%.4lf] %d: czekam w kolejce\n", now(), getpid());
 
     if (!queue_push(&state->queue, getpid())) {
         sem_post(sem_queue);
@@ -244,7 +244,7 @@ int kid_wait_for_being_pooped() {
         return -1;
     }
 
-    printf("[%.4lf] %d: a co to? czekolada? <sniff> chyba nie :(\n", now(), getpid());
+    printf("[%.4lf] %d: ide na strzyzenie\n", now(), getpid());
     return 0;
 }
 
@@ -281,7 +281,7 @@ int kid_main() {
         }
 
         if (kid_wait_for_being_pooped() == -1) {
-            perror("nie powiodlo sie czekanie na ubabranie");
+            perror("nie powiodlo sie czekanie na strzyzenie");
             return 1;
         }
     }
@@ -298,7 +298,7 @@ pid_t *pids = NULL;
 int spawned_kids = 0;
 
 pid_t pigeon_wait_for_kid() {
-    printf("[%.4lf] golab czeka na ofiare\n", now());
+    printf("[%.4lf] golibroda spi\n", now());
     fflush(stdout);
 
     if (sem_wait(sem_pigeon) == -1) {
@@ -322,7 +322,7 @@ pid_t pigeon_wait_for_kid() {
         return -1;
     }
 
-    printf("[%.4lf] ofiara przybyla\n", now());
+    printf("[%.4lf] klient!\n", now());
     fflush(stdout);
 
     return pid;
@@ -330,7 +330,7 @@ pid_t pigeon_wait_for_kid() {
 
 void pigeon_end_pooping(pid_t kid) {
     kill(kid, SIGRTMIN);
-    printf("[%.4lf] tango down %d\n", now(), kid);
+    printf("[%.4lf] ostrzyglem %d\n", now(), kid);
     fflush(stdout);
 }
 
@@ -398,7 +398,7 @@ int main(int argc, char *argv[]) {
         {
             pid_t pid = pigeon_wait_for_kid();
             if (pid == -1) {
-                perror("czekanie na ofiare nie wyszlo");
+                perror("czekanie na klienta nie wyszlo");
                 return 1;
             }
 
