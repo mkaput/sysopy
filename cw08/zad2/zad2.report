@@ -1,0 +1,39 @@
+a)
+    1) Dla sygnałów SIGUSR1, SIGTERM i SIGKILL proces się zakończył a nie zdążyły niczego wykonać. Dla SIGSTOP
+    wątki kontynuowały pracę normalnie.
+
+    2) Dla sygnału SIGKILL proces zakończył się, natomiast dla pozostałych normalnie pracowały wszystkie wątki.
+
+    3) Dla sygnału SIGKILL proces zakończył się, natomiast dla pozostałych wątek główny odebrał sygnał.
+
+    4) Dla sygnału SIGKILL proces zakończył się, natomiast dla pozostałych normalnie pracowały wszystkie wątki.
+
+    5) Dla sygnału SIGKILL proces zakończył się, natomiast dla pozostałych ostatni wątek odebrał sygnał.
+
+
+b)
+program uruchomiony poprzez GDB:
+tocze sie 5940
+tocze sie 5939
+tocze sie 5940
+tocze sie 5939
+tocze sie 5940
+tocze sie 5939
+Signal: SIGFPE (Arithmetic exception)
+tocze sie 5939
+tocze sie 5940
+pid 5935, tid 5941, sig 8
+Signal: SIGFPE (Arithmetic exception)
+pid 5935, tid 5941, sig 8
+tocze sie 5939
+tocze sie 5940
+Signal: SIGFPE (Arithmetic exception)
+pid 5935, tid 5941, sig 8
+Signal: SIGFPE (Arithmetic exception)
+pid 5935, tid 5941, sig 8
+Signal: SIGFPE (Arithmetic exception)
+
+uname -a: Linux mk 4.10.13-200.fc25.x86_64 #1 SMP Thu Apr 27 20:39:25 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+
+po wystąpieniu sygnału SIGFPE i jego obsłużeniu w handlerze wątek główny próbuje ponownie podzielić przez 0.
+pozostałe wątki nie sa informowane o sygnale (handler jest uruchamiany w wadliwym wątku)
