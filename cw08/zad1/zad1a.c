@@ -36,7 +36,7 @@ static void *thread_func(void *arg) {
             if (strstr(r[i].text, word) != NULL) {
                 pthread_mutex_lock(&mutex);
 
-                printf("found %s, tid: %ld record_id: %d\n", word, gettid(), r->id);
+                printf("found %s, tid: %ld record_id: %d\n", word, gettid(), r[i].id);
                 fflush(stdout);
 
                 for (int j = 0; j < num_threads; j++) {

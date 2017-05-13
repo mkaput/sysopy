@@ -26,7 +26,7 @@ static void *thread_func(void *arg) {
     while (rb > 0) {
         for (int i = 0; i < rb; i++) {
             if (strstr(r[i].text, word) != NULL) {
-                printf("found %s, tid: %ld record_id: %d\n", word, gettid(), r->id);
+                printf("found %s, tid: %ld record_id: %d\n", word, gettid(), r[i].id);
                 fflush(stdout);
 
                 return NULL;
